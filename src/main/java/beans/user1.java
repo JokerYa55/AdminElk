@@ -12,40 +12,30 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author vasil
  */
-@XmlRootElement(name = "user1")
+@XmlRootElement(name = "request")
 public class user1 {
-   
-    @XmlAttribute(name = "user")
+
+    //(name = "user")
     private String user;
-    @XmlAttribute(name = "surname")
+    //@XmlAttribute(name = "surname")
     private String surname;
-    @XmlAttribute(name = "name")
+    //@XmlAttribute(name = "name")
     private String name;
-    @XmlAttribute(name = "patronymic")
+    //@XmlAttribute(name = "patronymic")
     private String patronymic;
-    @XmlAttribute(name = "dob")
+    //@XmlAttribute(name = "dob")
     private String dob;
-    @XmlAttribute(name = "region")
+    //@XmlAttribute(name = "region")
     private int region;
-    @XmlAttribute(name = "contactEmail")
+    //@XmlAttribute(name = "contactEmail")
     private String email;
-    @XmlAttribute(name = "contactPhone")
+    
     private String phone;
 
     public user1() {
     }
 
-    public user1(String user, String surname, String name, String patronymic, String dob, int region, String email, String phone) {
-        this.user = user;
-        this.surname = surname;
-        this.name = name;
-        this.patronymic = patronymic;
-        this.dob = dob;
-        this.region = region;
-        this.email = email;
-        this.phone = phone;
-    }
-
+    @XmlAttribute(name = "user")
     public String getUser() {
         return user;
     }
@@ -54,6 +44,7 @@ public class user1 {
         this.user = user;
     }
 
+    @XmlAttribute(name = "surname")
     public String getSurname() {
         return surname;
     }
@@ -62,6 +53,7 @@ public class user1 {
         this.surname = surname;
     }
 
+    @XmlAttribute(name = "name")
     public String getName() {
         return name;
     }
@@ -70,6 +62,7 @@ public class user1 {
         this.name = name;
     }
 
+    @XmlAttribute(name = "patronymic")
     public String getPatronymic() {
         return patronymic;
     }
@@ -78,6 +71,7 @@ public class user1 {
         this.patronymic = patronymic;
     }
 
+    @XmlAttribute(name = "dob")
     public String getDob() {
         return dob;
     }
@@ -86,6 +80,7 @@ public class user1 {
         this.dob = dob;
     }
 
+    @XmlAttribute(name = "region")
     public int getRegion() {
         return region;
     }
@@ -94,6 +89,7 @@ public class user1 {
         this.region = region;
     }
 
+    @XmlAttribute(name = "contactEmail")
     public String getEmail() {
         return email;
     }
@@ -102,6 +98,7 @@ public class user1 {
         this.email = email;
     }
 
+    @XmlAttribute(name = "contactPhone")
     public String getPhone() {
         return phone;
     }

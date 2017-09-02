@@ -14,12 +14,35 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement(name = "result")
 public class resalt {
+
     /*
      <response resultCode ="36" 
             resultComment="Пользователь petrov существует"/>
-    */
+     */
+    private int resultCode;
+    private String resultComment;
+
     @XmlAttribute(name = "resultCode")
-    int resultCode;
+    public int getResultCode() {
+        return resultCode;
+    }
+
+    public void setResultCode(int resultCode) {
+        this.resultCode = resultCode;
+    }
+
     @XmlAttribute(name = "resultComment")
-    String resultComment;
+    public String getResultComment() {
+        return resultComment;
+    }
+
+    public void setResultComment(String resultComment) {
+        this.resultComment = resultComment;
+    }
+
+    @Override
+    public String toString() {
+        return "resalt{" + "resultCode=" + resultCode + ", resultComment=" + resultComment + '}';
+    }
+
 }

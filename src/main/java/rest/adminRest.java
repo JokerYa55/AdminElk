@@ -5,6 +5,8 @@
  */
 package rest;
 
+import beans.resalt;
+import beans.user1;
 import beans.users;
 import java.util.logging.Logger;
 import javax.annotation.security.RolesAllowed;
@@ -32,7 +34,7 @@ public class adminRest {
 
     @GET
     @Path("/list")
-    @Produces(MediaType.TEXT_HTML)
+    @Produces(MediaType.APPLICATION_XML)
     //@RolesAllowed("admin-elk-user")
     /* в web.xml
     <login-config>
@@ -41,14 +43,15 @@ public class adminRest {
     </login-config>
      */
 
-    public String getHello() {
-        users item = new users();
-        item.setId(new Long(1));
-        item.setFirst_name("Иванов");
-        item.setSecond_name("Иван");
-        item.setThird_name("Иванjdbx");
-        convertObjectToXml(item);
-        return "Hello!";
+    public user1 getHello() {
+        user1 item = new user1();
+        item.setDob("01012017");
+        item.setPatronymic("Иванов");
+        item.setName("user");
+        item.setEmail("user@mail.ru");
+        item.setPhone("44444");
+        //convertObjectToXml(item);
+        return item;
     }
 
     @POST
@@ -59,9 +62,20 @@ public class adminRest {
         return item;
     }
 
-    private static String convertObjectToXml(users user) {
+    @POST
+    @Path("/addUser1")
+    @Produces(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.APPLICATION_XML)
+    public resalt addUser1(user1 item) {
+        resalt res = new resalt();
+        res.setResultCode(0);
+        res.setResultComment("Yes");
+        return res;
+    }
+
+    private static String convertObjectToXml(user1 user) {
         try {
-            JAXBContext context = JAXBContext.newInstance(users.class);
+            JAXBContext context = JAXBContext.newInstance(user1.class);
             Marshaller marshaller = context.createMarshaller();
             // устанавливаем флаг для читабельного вывода XML в JAXB
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
