@@ -53,7 +53,7 @@ public class adminRest {
 
     @POST
     @Path("/addUser")
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_XML)
     public users addUser(users item) {
         return item;
