@@ -53,10 +53,10 @@ public class adminRest {
 
     @POST
     @Path("/addUser")
-    @Produces(MediaType.TEXT_HTML)
+    @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.APPLICATION_XML)
-    public String addUser(users item) {
-        return "OK";
+    public users addUser(users item) {
+        return item;
     }
 
     private static String convertObjectToXml(users user) {
