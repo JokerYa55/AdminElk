@@ -67,6 +67,7 @@ public class adminRest {
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.APPLICATION_XML)
     public resalt addUser1(user1 item) {
+        log.info("addUser1 => " + item);
         resalt res = new resalt();
         res.setResultCode(0);
         res.setResultComment("Yes");
