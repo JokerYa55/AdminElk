@@ -14,22 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement(name = "user1")
 public class user1 {
-
-    /*
-    <request reqType="CREATE_USER" 
-            user="petrov" 
-            surname="Петров" 
-            name="Петр" 
-            patronymic="Иванович" 
-            dob="1985-08-08T00:00:00+06:00" 
-            region="23" 
-            contactEmail="petrov@gmail.com" 
-            contactPhone="9652323232" />
-    
-    
-            <response resultCode ="36" 
-            resultComment="Пользователь petrov существует"/>
-     */
+   
     @XmlAttribute(name = "user")
     private String user;
     @XmlAttribute(name = "surname")
