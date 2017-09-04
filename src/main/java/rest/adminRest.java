@@ -104,15 +104,6 @@ public class adminRest {
 
             user.setAttributes(attr);
 
-            /*credentialRepresentation credentials = new credentialRepresentation();
-            credentials.setType("password");
-            credentials.setValue("123");
-
-            List<credentialRepresentation> tempList = new ArrayList<>();
-            tempList.add(credentials);
-
-            user.setCredentials(tempList);*/
-
             log.info("user = " + user);
             String resObj = keycloak.addUser(user);
             if ((resObj != null) && (resObj.equals("Bearer"))) {
