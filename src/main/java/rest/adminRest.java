@@ -5,9 +5,11 @@
  */
 package rest;
 
+import beans.kkUser;
 import beans.resalt;
 import beans.user1;
 import beans.users;
+import java.util.HashMap;
 import java.util.logging.Logger;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
@@ -21,6 +23,7 @@ import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import rtk.sso.REST.apiREST;
 
 /**
  *
@@ -43,13 +46,15 @@ public class adminRest {
     </login-config>
      */
 
-    public user1 getHello() {
-        user1 item = new user1();
-        item.setDob("01012017");
-        item.setPatronymic("Иванов");
-        item.setName("user");
-        item.setEmail("user@mail.ru");
+    public kkUser getHello() {
+        kkUser item = new kkUser();
+        item.setEmail("test@mail.ru");
+        item.setFirstName("Иванов");
+        item.setSecondName("Петр");
+        item.setThirdName("Петрович");
+        item.setUsername("test");
         item.setPhone("44444");
+        item.setPassword("123");
         //convertObjectToXml(item);
         return item;
     }
@@ -74,7 +79,56 @@ public class adminRest {
         return res;
     }
 
-    private static String convertObjectToXml(user1 user) {
+    @POST
+    @Path("/addUser2")
+    @Produces(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.APPLICATION_XML)
+    public resalt addUser2(kkUser item) {
+        log.info("addUser2 => " + item);
+        resalt res = new resalt();
+
+        try {
+            apiREST keycloak = new apiREST("vasil", "123", "192.168.1.150:8080", "videomanager");
+            keycloak.Init();
+            rtk.sso.admintest.keycloakUser user = new rtk.sso.admintest.keycloakUser();
+            user.setEmail(item.getEmail());
+            user.setEnabled(true);
+            user.setFirstName(item.getFirstName());
+            user.setLastName(item.getSecondName());            
+            user.setUsername(item.getUsername());
+            
+            HashMap<String, String> attr = new HashMap<>();
+            attr.put("third_name", item.getThirdName());
+            attr.put("phone", item.getPhone());            
+
+            user.setAttributes(attr);
+
+            /*credentialRepresentation credentials = new credentialRepresentation();
+            credentials.setType("password");
+            credentials.setValue("123");
+
+            List<credentialRepresentation> tempList = new ArrayList<>();
+            tempList.add(credentials);
+
+            user.setCredentials(tempList);*/
+
+            log.info("user = " + user);
+            String resObj = keycloak.addUser(user);
+            if ((resObj != null) && (resObj.equals("Bearer"))) {
+                keycloak.Init();
+                keycloak.addUser(user);
+            }
+            
+            
+        } catch (Exception e) {
+        }
+
+        res.setResultCode(0);
+        res.setResultComment("Yes");
+        return res;
+    }
+
+    /*private static String convertObjectToXml(user1 user) {
         try {
             JAXBContext context = JAXBContext.newInstance(user1.class);
             Marshaller marshaller = context.createMarshaller();
@@ -87,5 +141,5 @@ public class adminRest {
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 }
