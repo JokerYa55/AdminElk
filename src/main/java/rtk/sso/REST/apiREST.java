@@ -91,7 +91,7 @@ public class apiREST {
 
             // Change user password
             log.info("userID = " + userDB.get("id"));
-            changeUserPassword((String) userDB.get("id"), "123"+((keycloakUser) user).getFirstName());
+            changeUserPassword((String) userDB.get("id"), ((keycloakUser) user).getAttributes().get("password"));
             log.info("userJSON = " + userJSON.toJSONString());
             res = (String) res1.get("error");
         } catch (Exception e) {

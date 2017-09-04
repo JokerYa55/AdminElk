@@ -19,7 +19,8 @@ public class keycloakUser {
     private boolean enabled;
     private String email;
     private String firstName;
-    private String lastName;    
+    private String lastName;
+
     private HashMap<String, String> attributes;
     private List<credentialRepresentation> credentials;
 
@@ -70,8 +71,6 @@ public class keycloakUser {
     public void setCredentials(List<credentialRepresentation> credentials) {
         this.credentials = credentials;
     }
-
-   
 
     @Override
     public String toString() {

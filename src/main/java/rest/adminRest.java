@@ -95,11 +95,12 @@ public class adminRest {
             user.setEnabled(true);
             user.setFirstName(item.getFirstName());
             user.setLastName(item.getSecondName());            
-            user.setUsername(item.getUsername());
+            user.setUsername(item.getUsername());            
             
             HashMap<String, String> attr = new HashMap<>();
             attr.put("third_name", item.getThirdName());
             attr.put("phone", item.getPhone());            
+            attr.put("password", item.getPassword()); 
 
             user.setAttributes(attr);
 
