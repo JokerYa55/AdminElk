@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -62,7 +63,7 @@ public class apiREST {
             nameValuePairs.add(new BasicNameValuePair("grant_type", "password"));
             JSONObject accessJson = httpUtil.doPost(url, nameValuePairs, null);
             res = (String) accessJson.get("access_token");
-            log.info("access_token = " + res);
+            log.log(Level.INFO, "access_token = {0}", res);
         } catch (Exception e) {
             log.warning(e.getMessage());
         }
@@ -79,7 +80,7 @@ public class apiREST {
             mapHeader.put("Content-Type", "application/json");
             mapHeader.put("Authorization", "Bearer " + this.token);
             JSONObject res1 = httpUtil.doPost(url, user, mapHeader);
-            log.info("res1 = " + res1.toJSONString());
+            log.log(Level.INFO, "res1 = {0}", res1.toJSONString());
 
             List<NameValuePair> params = new LinkedList<>();
             params.add(new BasicNameValuePair("search", ((keycloakUser) user).getUsername()));
@@ -90,9 +91,9 @@ public class apiREST {
             }
 
             // Change user password
-            log.info("userID = " + userDB.get("id"));
+            log.log(Level.INFO, "userID = {0}", userDB.get("id"));
             changeUserPassword((String) userDB.get("id"), ((keycloakUser) user).getAttributes().get("password"));
-            log.info("userJSON = " + userJSON.toJSONString());
+            log.log(Level.INFO, "userJSON = {0}", userJSON.toJSONString());
             res = (String) res1.get("error");
         } catch (Exception e) {
             log.warning(e.getMessage());
@@ -102,7 +103,7 @@ public class apiREST {
 
     public void changeUserPassword(String userID, String password) {
         try {
-            log.info("changeUserPassword => " + password);
+            log.log(Level.INFO, "changeUserPassword => {0}", password);
             String url = "http://" + host + "/auth/admin/realms/" + this.realm + "/users/" + userID + "/reset-password";
             utlhttp httpUtil = new utlhttp();
 
