@@ -113,6 +113,7 @@ public class adminRest {
             
             
         } catch (Exception e) {
+            log.warning(e.getMessage());
         }
 
         res.setResultCode(0);
