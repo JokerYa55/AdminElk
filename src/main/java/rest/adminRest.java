@@ -75,7 +75,7 @@ public class adminRest {
         log.info("addUser1 => " + item);
         resalt res = new resalt();
         res.setResultCode(0);
-        res.setResultComment("Yes");
+        res.setResultComment(item.toString());
         return res;
     }
 
