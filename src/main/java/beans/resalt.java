@@ -5,6 +5,7 @@
  */
 package beans;
 
+import java.util.Date;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -21,7 +22,10 @@ public class resalt {
      */
     private int resultCode;
     private String resultComment;
+    private Date dateTime;
 
+    
+    
     @XmlAttribute(name = "resultCode")
     public int getResultCode() {
         return resultCode;
@@ -43,6 +47,15 @@ public class resalt {
     @Override
     public String toString() {
         return "resalt{" + "resultCode=" + resultCode + ", resultComment=" + resultComment + '}';
+    }
+
+    @XmlAttribute(name = "dateTime")
+    public Date getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
     }
 
 }

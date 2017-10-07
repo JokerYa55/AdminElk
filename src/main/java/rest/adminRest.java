@@ -9,6 +9,7 @@ import beans.kkUser;
 import beans.resalt;
 import beans.user1;
 import beans.users;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Logger;
 import javax.annotation.security.RolesAllowed;
@@ -75,10 +76,16 @@ public class adminRest {
         log.info("addUser1 => " + item);
         resalt res = new resalt();
         res.setResultCode(0);
-        res.setResultComment(item.toString());
+        res.setResultComment("Ок");
+        res.setDateTime(new Date());
         return res;
     }
 
+    /**
+     *
+     * @param item
+     * @return
+     */
     @POST
     @Path("/addUser2")
     @Produces(MediaType.APPLICATION_XML)
@@ -94,13 +101,13 @@ public class adminRest {
             user.setEmail(item.getEmail());
             user.setEnabled(true);
             user.setFirstName(item.getFirstName());
-            user.setLastName(item.getSecondName());            
-            user.setUsername(item.getUsername());            
-            
+            user.setLastName(item.getSecondName());
+            user.setUsername(item.getUsername());
+
             HashMap<String, String> attr = new HashMap<>();
             attr.put("third_name", item.getThirdName());
-            attr.put("phone", item.getPhone());            
-            attr.put("password", item.getPassword()); 
+            attr.put("phone", item.getPhone());
+            attr.put("password", item.getPassword());
 
             user.setAttributes(attr);
 
@@ -110,8 +117,7 @@ public class adminRest {
                 keycloak.Init();
                 keycloak.addUser(user);
             }
-            
-            
+
         } catch (Exception e) {
             log.warning(e.getMessage());
         }
