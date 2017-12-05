@@ -12,18 +12,13 @@ import beans.users;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Logger;
-import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
-import javax.validation.Constraint;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import rtk.sso.REST.apiREST;
 
 /**
@@ -75,9 +70,10 @@ public class adminRest {
     public resalt addUser1(user1 item) {
         log.info("addUser1 => " + item);
         resalt res = new resalt();
-        res.setResultCode(0);
+        res.setResultCode("0");
         res.setResultComment("Ок");
-        res.setDateTime(new Date());
+        //res.setLastCommand("Дата => " + new Date());
+        log.info("res => " + res);
         return res;
     }
 
@@ -122,7 +118,7 @@ public class adminRest {
             log.warning(e.getMessage());
         }
 
-        res.setResultCode(0);
+        res.setResultCode("0");
         res.setResultComment("Yes");
         return res;
     }

@@ -5,7 +5,6 @@
  */
 package beans;
 
-import java.util.Date;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -13,29 +12,30 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author vasil
  */
-@XmlRootElement(name = "result")
+@XmlRootElement(name = "response")
 public class resalt {
 
     /*
      <response resultCode ="36" 
             resultComment="Пользователь petrov существует"/>
      */
-    private int resultCode;
+    private String resultCode;
     private String resultComment;
-    private Date dateTime;
+    //private String lastCommand;
 
-    
-    
-    @XmlAttribute(name = "resultCode")
-    public int getResultCode() {
+    public resalt() {
+    }
+
+    @XmlAttribute
+    public String getResultCode() {
         return resultCode;
     }
 
-    public void setResultCode(int resultCode) {
+    public void setResultCode(String resultCode) {
         this.resultCode = resultCode;
     }
 
-    @XmlAttribute(name = "resultComment")
+    @XmlAttribute
     public String getResultComment() {
         return resultComment;
     }
@@ -44,18 +44,18 @@ public class resalt {
         this.resultComment = resultComment;
     }
 
+//    @XmlAttribute
+//    public String getLastCommand() {
+//        return lastCommand;
+//    }
+//
+//    public void setLastCommand(String lastCommand) {
+//        this.lastCommand = lastCommand;
+//    }
+
     @Override
     public String toString() {
         return "resalt{" + "resultCode=" + resultCode + ", resultComment=" + resultComment + '}';
-    }
-
-    @XmlAttribute(name = "dateTime")
-    public Date getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
     }
 
 }
