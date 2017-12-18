@@ -66,9 +66,9 @@ public class adminRest {
     @POST
     @Path("/addUser1")
     @Produces(MediaType.APPLICATION_XML)
-    @Consumes(MediaType.APPLICATION_XML)
-    public resalt addUser1(user1 item) throws InterruptedException {
-        log.info("addUser1 => " + item);
+    //@Consumes(MediaType.APPLICATION_XML) user1 item
+    public resalt addUser1() throws InterruptedException {
+        log.info("addUser1");
         Thread.sleep(1000*50);
         resalt res = new resalt();
         res.setResultCode("0");

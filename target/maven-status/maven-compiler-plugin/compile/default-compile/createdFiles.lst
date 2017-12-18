@@ -1,10 +1,5 @@
-beans\user1.class
+rtk\sso\admintest\credentialRepresentation.class
+rtk\sso\REST\apiREST.class
 beans\kkUser.class
 beans\resalt.class
 rest\elkAdminApp.class
-rtk\sso\admintest\keycloakUser.class
-beans\users.class
-rtk\sso\admintest\credentialRepresentation.class
-rest\adminRest.class
-rtk\sso\httputil\utlhttp.class
-rtk\sso\REST\apiREST.class
