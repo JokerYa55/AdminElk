@@ -67,8 +67,9 @@ public class adminRest {
     @Path("/addUser1")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.APPLICATION_XML)
-    public resalt addUser1(user1 item) {
+    public resalt addUser1(user1 item) throws InterruptedException {
         log.info("addUser1 => " + item);
+        Thread.sleep(1000*50);
         resalt res = new resalt();
         res.setResultCode("0");
         res.setResultComment("Ок");
